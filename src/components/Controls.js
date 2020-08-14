@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class Controls extends Component {
-
   render() {
     const { 
        createBtn, 
@@ -70,7 +69,6 @@ class Controls extends Component {
           >
             Delete
           </button>
-          
         </div>
       </div>
     )

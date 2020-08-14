@@ -4,7 +4,6 @@ const taskNameToId = name => {
   return `task-${name}`;
 }
 
-
 const Task = ({ name, selectTask, task }) => {
   return (
     <div

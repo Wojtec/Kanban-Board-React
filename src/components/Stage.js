@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Task from './Task';
 
 const Stage = ({ name, stageId, tasks, selectTask }) => {

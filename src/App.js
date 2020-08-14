@@ -42,7 +42,6 @@ class App extends Component {
   createNewTask = () => {
     const {task} = this.state;
     let tasks = [...this.state.tasks, {name: task, stage: 0}];
-    
     this.setState({tasks, task: '', createBtn: true})
   }
 
@@ -53,59 +52,47 @@ class App extends Component {
       backBtn: false,
       deleteBtn: false,
     });
-  
-
-
   }
 
   deleteTask = (element) => {
-      const tasksList = this.state.tasks;
-      const tasks = tasksList.filter(task => {
-       return task.name !== element.name;
+    const tasksList = this.state.tasks;
+    const tasks = tasksList.filter(task => {
+      return task.name !== element.name;
 
-      })
-
-      this.setState({
-        tasks, 
-        taskSelected: '',
-        moveBtn:true,
-        backBtn: true,
-        deleteBtn: true,
-      });
+    })
+    this.setState({
+      tasks, 
+      taskSelected: '',
+      moveBtn:true,
+      backBtn: true,
+      deleteBtn: true,
+    });
   }
 
   moveForward = (element) => {
     const tasksEle = this.state.tasks;
-    
     let tasks = tasksEle.filter(task => {
       if(task.name === element.name && task.stage !== 3){
         task.stage += 1;
         task.stage === 3 ?  this.setState({moveBtn: true, backBtn:false}) : this.setState({backBtn: false})
-
-        
       }
-  
+
      return  [...this.state.tasks, {task}];
     })
-
     this.setState({tasks});
   }
 
   moveBack = (element) => {
     const tasksEle = this.state.tasks;
-    
     let tasks = tasksEle.filter(task => {
       if(task.name === element.name && task.stage !== 0){
-
          task.stage -= 1;
          task.stage === 0 ?  this.setState({moveBtn: false, backBtn: true}) : this.setState({moveBtn: false})
-
       }
   
      return  [...this.state.tasks, {task}];
     })
     this.setState({tasks});
-
   }
 
   stagesTasks = (tasks) => {
@@ -118,13 +105,18 @@ class App extends Component {
       stagesTasks[stageId].push(task);
     }
     return stagesTasks;
-
   }
 
   render() {
-    const { tasks, taskSelected, moveBtn, backBtn, deleteBtn, task, createBtn} = this.state;
-
-  
+    const { 
+       tasks,
+       taskSelected,
+       moveBtn, 
+       backBtn, 
+       deleteBtn, 
+       task, 
+       createBtn} = this.state;
+       
     return (
       <div className="App">
         <Controls 
